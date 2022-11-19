@@ -4,57 +4,39 @@
     <meta charset="UTF-8">
     <title>Handball</title>
    </head>
-
 <style>
-
     body{
         background-color: black;
     }
-
     a {
         color: black;
         text-decoration: none;
     }
-
     .feed{
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         transition:0.3s;
     }
-
     .feed :hover{
         transform: scale(1.005)
     }
-
     .feedImages{
-        max-width: 300px;
+        max-width: 320px;
+        overflow: hidden;
     }
-
     .imageWrapper{
         border: 1px solid #141414;
         margin: 10px;
-        max-width: 300px;
+        max-width: 320px;
         background-color: rgba(60,75,66, 0.5);
         min-height: 440px;
     }
-
-    @media screen and (max-width: 500px) {
-        .imageWrapper{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            border: 1px solid #141414;
-            margin: 10px;
-            max-width: 100%;
-            background-color: rgba(60,75,66, 0.5);
-            min-height: 440px;
-        }
-        .feedImages{
-            max-width: 100%;
-        }
+    .innerImageWrapper{
+        max-width: 320px;
+        max-height: 320px;
+        overflow: hidden;
     }
-
     .imageTexts{
         max-height: 60px;
         min-height: 60px;
@@ -63,7 +45,6 @@
         font-family: "Arial", serif;
         color: #b59208;
     }
-
     .dates{
         color: #b59208;
         font-weight: lighter;
@@ -71,7 +52,6 @@
         margin: 15px;
         font-family: "Arial", serif;
     }
-
     .line{
         height: 1px;
         width: 100%;
@@ -105,12 +85,12 @@
 
     window.addEventListener('load', function() {
         let feed = new Instafeed({
-            accessToken: 'TOKEN HERE',
+            accessToken: 'IGQVJWZAkhQZAXV6MHRZAV0oyZAnNvMHpZAeHpYVWVvRi1pMERmeW1ORlhnSWIzbklPdmotZATl3ZAEFFNVVDelJXc3c3WXZAPNUtpT05IQkx4OUdIR2xtbWxYTDU3elpmSlk2d1hMMERWZA1B2WC1YOG04aXJtcAZDZD',
             resolution: 'standard_resolution',
             sortBy: 'most-recent',
             limit: 9,
             template: ' <a href="{{link}}"> <div class="imageWrapper">' +
-                '<span> <img class="feedImages" title="{{caption}}" src="{{image}}" /></span>' +
+                '<div class="innerImageWrapper"> <img class="feedImages" title="{{caption}}" src="{{image}}" /></div>' +
                 ' <div class="imageTexts">{{caption}}</div> <div class="line"></div> <div class="dates">{{timestamp}}</div></div></a>',
             after: cropTextAndDate,
         });
@@ -124,7 +104,6 @@
         for(let element of document.getElementsByClassName("dates")){
             element.textContent = truncateDate(element.textContent, 11)
         }
-
     };
 
 </script>
