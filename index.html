@@ -62,17 +62,17 @@
 
 <script type="text/javascript">
 
-    const url = 'https://dl.dropboxusercontent.com/s/sjd7xeu0gpwx1li/instafeed.min.js?dl=0';
+    const url = 'https://dl.dropboxusercontent.com/s/f79tnp1ps4xroco/instafeed.min.js?dl=0';
     const e = document.createElement('SCRIPT');
     e.src=url;
     document.head.appendChild(e);
 
     function truncate(str, n){
-        while (!(str.charAt(n) === " ")){
-            console.log("increased")
-            n+=1
+        while (n < str.length && !(str.charAt(n) === " ")){
+            console.log("increased");
+            n+=1;
         }
-        n+=1
+        n+=1;
         return (str.length > n) ? str.slice(0, n-1)  + '...': str;
     }
 
